@@ -1,0 +1,41 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jan  7 23:20:53 2019
+
+@author: Mr Mejia
+"""
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/DuvanSGF/Sifunciona/master/sensor.csv"
+names = ["Temperatura","Humedad", "Clima"]
+df = pd.read_csv(url, names=names, sep =',')
+
+# Imprimir todos los datos
+print (df)
+
+# Extraer los datos de una De las Columnas
+print(df['Humedad'])
+
+# Imprimir las 3 primeras Filas
+print(df.loc[0:3]) 
+
+# Imprimir los datos de Acuerdo a la relacion de una Columna de menor a mayor
+print(df.sort_values(by='Temperatura'))
+
+# Imprimir los datos de Acuerdo a la relacion de una Columna de mayor a menor
+print(df.sort_values(by='Temperatura', ascending=False))
+
+
+"""     Imprimir los datos que cumplan una condicion 
+        en este caso es la columna y luego el dato
+        columna: Temperatura datos menores a 50
+"""
+print(df[df.iloc[:,0]<50])
+
+
+# Crear una nueva lista apartir de el nuevo conjunto de datos
+temp = df['Temperatura']
+print(temp)
+
+# Ahora lo imprimimos con una condicion ejemplo la Temperatura menor de 20
+print(temp[temp<20])
